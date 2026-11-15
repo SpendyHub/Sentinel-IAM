@@ -1,0 +1,541 @@
+
+/* ======================================
+   SENTINEL IAM — SIDEBAR DESIGN
+   ====================================== */
+
+/* Global sidebar colors */
+:root {
+  --sidebar-bg: #111c30;
+  --sidebar-text: #a9b7ca;
+  --sidebar-muted: #8292aa;
+  --sidebar-active: #263b5c;
+  --sidebar-accent: #3b82f6;
+}
+
+/* Main sidebar container */
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  padding: 28px 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+}
+
+/* Brand section */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* Brand logo */
+.brand-logo {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+  background: var(--sidebar-accent);
+
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Navigation container */
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Navigation section heading */
+.navigation-label {
+  margin: 0 0 10px 10px;
+
+  color: var(--sidebar-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+/* Individual navigation links */
+.navigation-link {
+  display: block;
+  padding: 12px 14px;
+
+  border-radius: 7px;
+
+  color: var(--sidebar-text);
+  font-size: 14px;
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Hover interaction */
+.navigation-link:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+/* Currently selected navigation item */
+.navigation-link.active {
+  background: var(--sidebar-active);
+  color: #ffffff;
+}
+
+
+/* ======================================
+   MAIN APPLICATION LAYOUT
+   ====================================== */
+
+/* Places the sidebar and workspace side by side. */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Main workspace occupies the remaining width. */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px;
+  background: #0b1120;
+}
+
+/* Page heading section. */
+.page-header {
+  margin-bottom: 32px;
+}
+
+/* Main page title. */
+.page-header h1 {
+  margin: 0 0 10px;
+  color: #f8fafc;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Supporting description. */
+.page-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+
+
+/* ======================================
+   DASHBOARD STATISTICS CARDS
+   ====================================== */
+
+/* Grid that will hold the statistics cards. */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+/* Individual statistics card. */
+.stat-card {
+  padding: 24px;
+  background: #111c30;
+  border: 1px solid #26354b;
+  border-radius: 12px;
+}
+
+/* Card heading. */
+.stat-title {
+  margin: 0 0 18px;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Main metric value. */
+.stat-value {
+  margin: 0 0 10px;
+  color: #f8fafc;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* Supporting information. */
+.stat-description {
+  margin: 0;
+  color: #8292aa;
+  font-size: 12px;
+}
+
+
+/* ======================================
+   RESPONSIVE DASHBOARD LAYOUT
+   ====================================== */
+
+/* Tablet screens. */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .main-content {
+    padding: 30px;
+  }
+}
+
+/* Mobile screens. */
+@media (max-width: 640px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    padding: 22px;
+  }
+}
+
+
+/* ======================================
+   RECENT ACTIVITY
+   ====================================== */
+
+/* Activity feed container. */
+.activity-panel {
+  margin-top: 32px;
+  padding: 24px;
+  background: #111c30;
+  border: 1px solid #26354b;
+  border-radius: 12px;
+}
+
+/* Activity section heading. */
+.activity-heading {
+  margin: 0 0 20px;
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Individual activity row. */
+.activity-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: center;
+  gap: 20px;
+
+  padding: 18px 0;
+  border-bottom: 1px solid #26354b;
+}
+
+/* Remove the border from the final row. */
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+/* Person responsible for the action. */
+.activity-action {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+/* Description of the activity. */
+.activity-action {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* Highlight the affected resource. */
+.activity-action strong {
+  color: #e2e8f0;
+}
+
+/* Event timestamp. */
+.activity-time {
+  color: #8292aa;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Stack activity information on small screens. */
+@media (max-width: 640px) {
+  .activity-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+
+/* ======================================
+   DASHBOARD HEADER
+   ====================================== */
+
+.dashboard-header {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 0 28px;
+  margin: -40px -40px 36px;
+
+  background: #111c30;
+  border-bottom: 1px solid #26354b;
+}
+
+/* Search field container. */
+.header-search {
+  width: 340px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 11px 14px;
+  border: 1px solid #26354b;
+  border-radius: 8px;
+
+  color: #8292aa;
+  background: #0b1120;
+}
+
+/* Search input. */
+.header-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+
+  color: #e2e8f0;
+  background: transparent;
+  font-size: 13px;
+}
+
+.header-search input::placeholder {
+  color: #8292aa;
+}
+
+/* Right-side administrator controls. */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Notification button. */
+.notification-button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #26354b;
+  border-radius: 8px;
+
+  color: #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Notification indicator. */
+.notification-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #ef4444;
+}
+
+/* Administrator profile. */
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+/* Administrator avatar. */
+.admin-avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #263b5c;
+
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Administrator information. */
+.admin-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-name {
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-role {
+  color: #8292aa;
+  font-size: 11px;
+}
+
+/* Smaller screens. */
+@media (max-width: 640px) {
+  .dashboard-header {
+    padding: 14px 20px;
+    margin: -22px -22px 28px;
+    flex-wrap: wrap;
+  }
+
+  .header-search {
+    width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+/* ======================================
+   STATISTICS CARD ICONS
+   ====================================== */
+
+/* Positions the title and icon horizontally. */
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Icon container. */
+.stat-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.12);
+
+  color: #60a5fa;
+}
+
+/* Prevents icons from shrinking. */
+.stat-icon svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+}
+
+/* Keep card headings aligned with the icon. */
+.stat-card-header .stat-title {
+  margin-bottom: 0;
+}
+
+
+/* ======================================
+   ACTIVITY CATEGORY INDICATORS
+   ====================================== */
+
+/* Base category badge. */
+.activity-category {
+  width: fit-content;
+  padding: 6px 9px;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Identity events. */
+.activity-category.identity {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.12);
+}
+
+/* Access events. */
+.activity-category.access {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+}
+
+/* Security events. */
+.activity-category.security {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* Updated activity row layout. */
+.activity-item {
+  grid-template-columns: 100px 1fr 2fr auto;
+}
+
+
+/* ======================================
+   ACTIVITY FEED — MOBILE FIX
+   ====================================== */
+
+@media (max-width: 640px) {
+  .activity-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .activity-category {
+    margin-bottom: 4px;
+  }
+
+  .activity-time {
+    white-space: normal;
+  }
+}
