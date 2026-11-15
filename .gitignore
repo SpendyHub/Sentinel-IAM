@@ -56,3 +56,6 @@ Thumbs.db
 
 # Local audit reports
 audit-report.jsonm
+
+# Local audit reports
+audit-report.json 
